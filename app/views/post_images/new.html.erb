@@ -1,0 +1,10 @@
+<h1>New Post</h1>
+<%= form_with model: @post_image, local:true do |f| %>
+  <h4>Photograph</h4>
+  <%= f.attachment_field :image %>
+  <h4>Title</h4>
+  <%= f.text_field :post_name %>
+  <h4>Caption</h4>
+  <%= f.text_area :caption %>
+  <%= f.submit '投稿' %>
+<% end %>
