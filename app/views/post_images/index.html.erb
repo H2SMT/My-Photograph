@@ -1,1 +1,14 @@
 <%= render 'post_images/list', post_images: @post_images %>
+
+<% @all_ranks.each.with_index(1) do |post_image, i| %>
+  <h6>第<%= i %>位</h6>
+  <%= link_to post_image_path(post_image) do %>
+    <%= attachment_image_tag post_image, :image %>
+  <% end %>
+  <h6>
+    <%= link_to post_image_path(post_image) do %>
+      <%= post_image.post_name %>
+    <% end %>
+  </h6>
+  <%= link_to "詳細をみる", post_image_path(post_image) %>
+<% end %>
