@@ -1,45 +1,58 @@
-<div class="post-body">
-  <%= attachment_image_tag @post_image, :image %>
-  <p>Title:<%= @post_image.post_name %></p>
-  <p>Caption:<%= @post_image.caption %></p>
-  <p>User Name:<%=@post_image.user.name %></p>
-  <p>Post date and time:<%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
-  <% if @post_image.user == current_user %>
-    <%= link_to "Delete",post_image_path(@post_image), method: :delete %>
-  <% end %>
-  <% if @post_image.favorited_by?(current_user) %>
-    <p>
-      <%= link_to post_image_favorites_path(@post_image),method: :delete do %>
-        ♥<%= @post_image.favorites.count %>
-      <% end %>
-    </p>
-  <% else %>
-    <p>
-      <%= link_to post_image_favorites_path(@post_image),method: :post do %>
-        ♡<%= @post_image.favorites.count %>
-      <% end %>
-    </p>
-  <% end %>
-</div>
-
-<div class="comments">
-  <p>コメント件数:<%= @post_image.post_comments.count %></p>
-  <% @post_image.post_comments.each do |post_comment| %>
-    <p><%= attachment_image_tag post_comment.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg"  %></p>
-    <%= post_comment.user.name %>
-    <%= post_comment.created_at.strftime('%Y/%m/%d') %>
-    <%= post_comment.comment %>
-    <% if post_comment.user == current_user %>
-      <div class="comment-delete">
-        <%= link_to "Delete",post_image_post_comment_path(post_comment.post_image,post_comment),method: :delete %>
+<div class="card-list-container py-5">
+  <div class="card w-50 mx-auto mt-4 shadow-lg">
+    <%= attachment_image_tag @post_image, :image %>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-2">
+          <%= attachment_image_tag @post_image.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class:"mt-3 rounded-circle"; %>
+        </div>
+          
+        <div class="col-10">
+          <p class="card-title"><strong><i class="far fa-flag"></i><span><%= @post_image.post_name %></span></strong></p>
+          <p>説明:<%= @post_image.caption %></p>
+          <p><i class="fas fa-user">:<%=@post_image.user.name %></i></p>
+          <p><%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
+          <% if @post_image.user == current_user %>
+            <%= link_to "Delete",post_image_path(@post_image), method: :delete, local: true %>
+          <% end %>
+          <div class="favorites">
+        　 <% if @post_image.favorited_by?(current_user) %>
+            <p>
+              <%= link_to post_image_favorites_path(@post_image),method: :delete do %>
+                ♥<%= @post_image.favorites.count %>
+              <% end %>
+            </p>
+            <% else %>
+              <p>
+                <%= link_to post_image_favorites_path(@post_image),method: :post do %>
+                  ♡<%= @post_image.favorites.count %>
+                <% end %>
+              </p>
+            <% end %>
+          </div>
+　　      
+        　<div class="comments">
+            <p>コメント件数:<%= @post_image.post_comments.count %></p>
+              <% @post_image.post_comments.each do |post_comment| %>
+                <p><%= attachment_image_tag post_comment.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg"  %></p>
+                  <%= post_comment.user.name %>
+                  <%= post_comment.created_at.strftime('%Y/%m/%d') %>
+                  <%= post_comment.comment %>
+                  <% if post_comment.user == current_user %>
+                  <div class="comment-delete">
+                    <%= link_to "Delete",post_image_post_comment_path(post_comment.post_image,post_comment),method: :delete %>
+                  </div>
+                  <% end %>
+              <% end %>
+            <div class="new-comment">
+              <%= form_with(model:[@post_image,@post_comment],local:true) do |f| %>
+                <%= f.text_area :comment,rows:'5',placeholder:"コメントをここに" %>
+                <%= f.submit "送信する" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
       </div>
-    <% end %>
-  <% end %>
-</div>
-
-<div class="new-comment">
-  <%= form_with(model:[@post_image,@post_comment],local:true) do |f| %>
-    <%= f.text_area :comment,rows:'5',placeholder:"コメントをここに" %>
-    <%= f.submit "送信する" %>
-  <% end %>
+    </div>
+  </div>
 </div>

@@ -9,7 +9,6 @@
 <!--_list呼び出し-->
 <%= render 'post_images/list', post_images: @post_images %>
 
-
 <!--ランキング-->
 <div class="card-list-container py-5">
   <% @all_ranks.each.with_index(1) do |post_image, i| %>
@@ -26,7 +25,7 @@
             <div class="col-10">
               <p class="card-title">
                 <%= link_to(post_image_path(post_image.id), class:"text-dark") do %>
-                  <strong><i class="far fa-flag"></i><span><%= post_image.post_name %></span></strong>
+                  <strong><i class="far fa-flag"></i><span> <%= post_image.post_name %></span></strong>
                 <% end %>
               </p>
               <p class="card-text">説明：<%= post_image.caption %></p>
