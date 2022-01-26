@@ -23,7 +23,9 @@
 
 ## 設計書
 
-<...>
+https://docs.google.com/spreadsheets/d/1Eay0EaIQPwTYwad-4hQU9TKjmRkAuQpOD47eauyO9is/edit?usp=sharing
+https://docs.google.com/spreadsheets/d/1LWnK-6QkKUBq1OSMLh95fICbq10XmwGtfTWpJD5nDbY/edit?usp=sharing
+https://drive.google.com/file/d/1oe7N2jeH0mS4yjU3BCuwVdngfV7dnGrr/view?usp=sharing
 
 ## チャレンジ要素一覧
 
@@ -36,8 +38,3 @@ https://docs.google.com/spreadsheets/d/14Cxp1rTpPCq16W1xm8CbMVykliPDCs6kVQW1cLJY
 - フレームワーク：Ruby on Rails
 - JS ライブラリ：jQuery
 - IDE：Cloud9
-
-## 使用素材
-
-- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名と URL を明記してください。
-- 使用しない場合は、使用素材の項目を README から削除してください。
