@@ -33,7 +33,7 @@ https://docs.google.com/spreadsheets/d/14Cxp1rTpPCq16W1xm8CbMVykliPDCs6kVQW1cLJY
 
 ## 開発環境
 
-- OS：macOS Monterey(ver.12.1)
+- OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JS ライブラリ：jQuery

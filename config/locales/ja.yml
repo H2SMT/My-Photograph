@@ -1,0 +1,12 @@
+ja:
+  errors:
+    messages:
+      not_saved: 保存できませんでした
+  activerecord:
+    attributes:
+      user:
+        email: Eメール
+        password: パスワード
+        password_confirmation: パスワード（確認用）
+    models:
+      user: ユーザー
